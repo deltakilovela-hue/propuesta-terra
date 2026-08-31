@@ -117,6 +117,29 @@
   .callout{ background:var(--accent-soft); border:1px solid var(--accent-soft-2); padding:18px 20px; margin:1.2em 0; font-size:.92rem; }
   .callout .eyebrow{ display:block; margin-bottom:6px; }
 
+  /* funnel */
+  .funnel{ max-width:66ch; margin:14px 0 1.4em; }
+  .fbar{ display:flex; align-items:center; gap:14px; padding:6px 0; }
+  .fbar .lbl{ font-size:.82rem; color:var(--ink-soft); width:132px; flex:none; }
+  .fbar .track{ flex:1; height:10px; background:var(--surface-2); }
+  .fbar .fill{ height:100%; background:var(--dk); }
+  .fbar .num{ font-family:var(--mono); font-size:.82rem; width:34px; text-align:right; flex:none; color:var(--ink); }
+
+  /* CPL benchmark cards */
+  .cpl-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0 1.4em; }
+  @media (max-width:680px){ .cpl-cards{ grid-template-columns:1fr; } }
+  .cpl-card{ padding:16px 18px; border-top:2px solid var(--rule); background:var(--surface); }
+  .cpl-card.hi{ border-top-color:var(--ink-faint); }
+  .cpl-card.mid{ border-top-color:var(--accent); }
+  .cpl-card.lo{ border-top-color:var(--dk); }
+  .cpl-card .amt{ font-family:var(--mono); font-size:1.15rem; color:var(--ink); }
+  .cpl-card h5{ font-family:var(--sans); font-size:.78rem; font-weight:600; margin:4px 0 4px; }
+  .cpl-card p{ font-size:.8rem; color:var(--ink-soft); margin:0; }
+
+  .budget-box{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; padding:20px 22px; background:var(--surface); border:1px solid var(--rule); box-shadow:var(--shadow); margin:1.2em 0; }
+  .budget-box .big{ font-family:var(--mono); font-size:1.7rem; color:var(--accent-ink); white-space:nowrap; }
+  .budget-box .txt{ font-size:.88rem; color:var(--ink-soft); }
+
   .cta-wrap{ margin-top:70px; background:var(--ink); color:var(--bg); }
   :root[data-theme="dark"] .cta-wrap, :root:not([data-theme="light"]) .cta-wrap{ background:var(--surface-2); }
   .cta-inner{ max-width:860px; margin:0 auto; padding:56px 28px 50px; }
@@ -153,7 +176,7 @@
     :root{ --bg:#F2EEE3; --surface:#FBF8F1; --surface-2:#ECE6D7; --ink:#392C21; --ink-soft:#7A6C5C; --ink-faint:#A99C8A; --rule:#DAD0BC; --accent:#B25E2C; --accent-ink:#7C401B; --accent-soft:#EBD9C4; --accent-soft-2:#E3CBAE; --dk:#048787; --dk-soft:#DCEEEC; --dk-ink:#036666; --good:#4C7A4C; }
     @page{ margin:14mm; }
     html, body{ background:var(--bg) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-    .model, .target-card, .scope-col, .callout, .commission-split, table.cmp, .story-frame{ break-inside:avoid; }
+    .model, .target-card, .scope-col, .callout, .commission-split, table.cmp, .story-frame, .cpl-card, .budget-box{ break-inside:avoid; }
     .cta-wrap{ break-before:page; }
     .lightbox{ display:none !important; }
     .gallery-wrap{ break-inside:avoid-page; }
@@ -269,6 +292,38 @@
       <tr><td>Total estimado, fase 1</td><td class="num">$138,000 – $220,000</td><td class="num">$51,000 – $65,800</td></tr>
     </table>
   </div>
+</div>
+
+<hr class="rule wrap">
+
+<div class="part wrap" id="pauta">
+  <div class="part-head"><span class="eyebrow">Presupuesto de pauta — lo paga Terra, aparte de la cuota de Delta Kilo</span><h2>Cuánto invertir para 2 ventas al mes</h2></div>
+  <p class="part-intro" style="margin-bottom:22px;">Partimos del mismo embudo que usa el sistema — para llegar a 2 ventas hace falta entrar por arriba con suficiente volumen de prospectos calificables.</p>
+
+  <p class="eyebrow" style="display:block;margin-bottom:10px;">Volumen necesario — embudo mensual</p>
+  <div class="funnel">
+    <div class="fbar"><div class="lbl">Prospectos</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="num">100</div></div>
+    <div class="fbar"><div class="lbl">Contactados</div><div class="track"><div class="fill" style="width:70%"></div></div><div class="num">70</div></div>
+    <div class="fbar"><div class="lbl">Calificados</div><div class="track"><div class="fill" style="width:35%"></div></div><div class="num">35</div></div>
+    <div class="fbar"><div class="lbl">Visitas</div><div class="track"><div class="fill" style="width:15%"></div></div><div class="num">15</div></div>
+    <div class="fbar"><div class="lbl">Negociaciones</div><div class="track"><div class="fill" style="width:5%"></div></div><div class="num">5</div></div>
+    <div class="fbar"><div class="lbl">Ventas</div><div class="track"><div class="fill" style="width:2%; background:var(--accent);"></div></div><div class="num">2</div></div>
+  </div>
+
+  <p class="eyebrow" style="display:block;margin:28px 0 10px;">Costo por lead — referencias de mercado 2026</p>
+  <div class="cpl-cards">
+    <div class="cpl-card hi"><div class="amt">≈ $650 MXN</div><h5>Portal inmobiliario</h5><p>Sin distinción de intención de compra.</p></div>
+    <div class="cpl-card mid"><div class="amt">≈ $490 MXN</div><h5>Meta Ads sin segmentar</h5><p>Campaña de captación general, sin retargeting.</p></div>
+    <div class="cpl-card lo"><div class="amt">≈ $240 MXN</div><h5>Meta Ads con retargeting</h5><p>Sobre quien ya interactuó con el proyecto.</p></div>
+  </div>
+  <p class="cmp-note" style="margin-bottom:0;">Terra es 100% foráneo y de ticket alto — más caro de alcanzar que el promedio nacional ($180 MXN), pero el retargeting baja el costo conforme avanza la campaña. Por eso proyectamos un CPL mixto de $250 – $450 MXN, no el mínimo optimista.</p>
+
+  <p class="eyebrow" style="display:block;margin:28px 0 12px;">Presupuesto recomendado</p>
+  <div class="budget-box">
+    <div class="big">$25,000 – $45,000 <span style="font-size:1rem;">MXN/mes</span></div>
+    <div class="txt">100 prospectos × $250–$450 MXN de CPL. Cruza bien con el benchmark de costo de adquisición por cierre ($20,000 MXN c/u × 2 ventas ≈ $40,000 MXN).</div>
+  </div>
+  <p class="cmp-note">Es un punto de partida, no una cifra fija — se ajusta con los datos reales de la campaña en los primeros 30–60 días, como ya contempla el plan de optimización.</p>
 </div>
 
 <hr class="rule wrap">
